@@ -77,6 +77,7 @@ Vista\MdiSeguridad.class
 Modelo\Conexion.class
 Vista\MdiSeguridad$3.class
 Vista\MdiSeguridad$6.class
+Vista\ComisionesVentas\frmComisionesVentas.class
 Vista\frmProcesoAplicacionUsuario$10.class
 Vista\frmProcesoAplicacionPerfil$8.class
 Vista\frmMantenimientoPerfil$3.class
@@ -96,6 +97,7 @@ Vista\frmMantenimientoUsuario$6.class
 Vista\frmProcesoAplicacionUsuario$7.class
 Modelo\UsuarioDAO.class
 Controlador\clsUsuario.class
+Controlador\ComisionesVentas\clsReportes.class
 Controlador\clsUsuarioConectado.class
 Vista\frmRestablecerContraseña$3.class
 Vista\frmLogin$4.class
@@ -121,4 +123,5 @@ Modelo\AsignacionAplicacionUsuarioDAO.class
 Vista\frmProcesoAplicacionPerfil$7.class
 Vista\frmLogin$3.class
 Controlador\clsBitacora.class
+Modelo\ComisionesVentas\RepostesDAO.class
 Vista\frmMantenimientoUsuario.class
