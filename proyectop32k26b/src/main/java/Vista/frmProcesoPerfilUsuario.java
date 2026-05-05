@@ -272,6 +272,7 @@ private boolean puedeEliminar() {
         getContentPane().add(btnQuitarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 412, -1, -1));
 
         Ayuda.setText("Ayuda");
+        Ayuda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Ayuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AyudaActionPerformed(evt);
