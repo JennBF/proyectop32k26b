@@ -24,6 +24,7 @@ import Controlador.clsUsuarioConectado;
 
 import Controlador.clsPerfil; 
 import Modelo.PerfilDAO;
+import java.io.File;
 
 /**
  *
@@ -167,6 +168,9 @@ private boolean puedeEliminar() {
         btnQuitarUno = new javax.swing.JButton();
         btnAsignarTodos = new javax.swing.JButton();
         btnQuitarTodos = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        Ayuda = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -266,6 +270,17 @@ private boolean puedeEliminar() {
             }
         });
         getContentPane().add(btnQuitarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 412, -1, -1));
+
+        Ayuda.setText("Ayuda");
+        Ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AyudaActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(Ayuda);
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -406,6 +421,25 @@ if (cboUsuario.getItemCount() > 0 && cboUsuario.getSelectedIndex() != -1) {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboUsuarioIdActionPerformed
 
+    private void AyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AyudaActionPerformed
+
+        try {
+            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+                Process p = Runtime
+                        .getRuntime()
+                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no Fue encontrada");
+            }
+            System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AyudaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,6 +477,7 @@ if (cboUsuario.getItemCount() > 0 && cboUsuario.getSelectedIndex() != -1) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Ayuda;
     private javax.swing.JButton btnAsignarTodos;
     private javax.swing.JButton btnAsignarUno;
     private javax.swing.JButton btnQuitarTodos;
@@ -454,6 +489,8 @@ if (cboUsuario.getItemCount() > 0 && cboUsuario.getSelectedIndex() != -1) {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaAsignados;
