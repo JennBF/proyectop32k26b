@@ -137,6 +137,7 @@ Vista\frmProcesoAplicacionUsuario$2.class
 Vista\frmLogin.class
 Vista\frmProcesoAplicacionPerfil$6.class
 Vista\frmRestablecerContraseña$4.class
+Vista\MdiSeguridad$16.class
 Vista\Bancos\MdiBancos$5.class
 Vista\MdiComercio$1.class
 Modelo\modeloCuentasCorrientes\provicionalDao.class

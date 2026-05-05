@@ -11,6 +11,7 @@ import Modelo.PermisosDAO;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -222,6 +223,11 @@ public class MdiSeguridad extends javax.swing.JFrame {
         mnuGeneral.add(mnuReportes);
 
         mnuAyudas.setText("Ayudas");
+        mnuAyudas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAyudasActionPerformed(evt);
+            }
+        });
         mnuGeneral.add(mnuAyudas);
 
         setJMenuBar(mnuGeneral);
@@ -415,6 +421,25 @@ public void configurarVisibilidadBotones(List<Integer> appsPermitidas) {
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_frmProcesoAplicacionUsuarioActionPerformed
+
+    private void mnuAyudasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAyudasActionPerformed
+
+        try {
+            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+                Process p = Runtime
+                        .getRuntime()
+                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no Fue encontrada");
+            }
+            System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuAyudasActionPerformed
 
     /**
      * @param args the command line arguments
