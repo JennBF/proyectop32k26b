@@ -398,6 +398,9 @@ if (cboUsuario.getItemCount() > 0 && cboUsuario.getSelectedIndex() != -1) {
         if (cboUsuarioId.getItemCount() > 0 && cboUsuarioId.getSelectedIndex() != -1) {
         if (cboUsuario.getItemCount() > cboUsuarioId.getSelectedIndex()) {
             cboUsuario.setSelectedIndex(cboUsuarioId.getSelectedIndex());
+            //codigo faltante, posible solucion
+            int idSeleccionado = Integer.parseInt(cboUsuarioId.getSelectedItem().toString());
+            llenarTablas(idSeleccionado);
         }
     }
 
