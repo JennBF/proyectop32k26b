@@ -163,6 +163,7 @@ Vista\Bancos\MdiBancos$15.class
 Vista\frmMantenimientoUsuario$3.class
 Vista\Bancos\frmCliente.class
 Vista\MdiComercio$2.class
+Vista\Bancos\frmMantenimientoTipoCuenta$2.class
 Modelo\AsignacionAplicacionPerfilDAO.class
 Vista\vistaPlanilla\MdiPlanillas.class
 Vista\frmProcesoAplicacionPerfil$2.class
