@@ -158,6 +158,11 @@ public class MdiGeneralCC extends javax.swing.JFrame {
         mnuGestionPagos.setText("Gestion de Pagos");
 
         jMenuItem6.setText("Generar Cuenta por Pagar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         mnuGestionPagos.add(jMenuItem6);
 
         jMenuItem7.setText("Registrar Pago");
@@ -293,6 +298,12 @@ public class MdiGeneralCC extends javax.swing.JFrame {
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        cuentasporpagar formulario = new cuentasporpagar();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
