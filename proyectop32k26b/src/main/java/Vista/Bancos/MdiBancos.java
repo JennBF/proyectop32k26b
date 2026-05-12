@@ -187,7 +187,7 @@ public class MdiBancos extends javax.swing.JFrame {
             }
         });
 
-        frmProcesoPerfilUsuario.setText("Asignacion Cociliación Bancaria");
+        frmProcesoPerfilUsuario.setText("Asignacion Movimiento Bancario");
         frmProcesoPerfilUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 frmProcesoPerfilUsuarioActionPerformed(evt);
@@ -211,7 +211,12 @@ public class MdiBancos extends javax.swing.JFrame {
         });
         mnuProcesos.add(frmProcesoAplicacionUsuario);
 
-        jMenuItem3.setText("Asignación Movimiento Bancario");
+        jMenuItem3.setText("Asignacion Conciliación Bancaria");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         mnuProcesos.add(jMenuItem3);
 
         jMenuItem5.setText("Asignación Transacción");
@@ -459,6 +464,10 @@ vista.setVisible(true);
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_frmProcesoAplicacionUsuarioActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
