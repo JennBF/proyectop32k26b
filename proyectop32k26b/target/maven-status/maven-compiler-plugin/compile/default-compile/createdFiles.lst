@@ -1,4 +1,5 @@
 Vista\MdiSeguridad$14.class
+Vista\vistaCuentasCorrientes\CCconciliacionBancaria.class
 Vista\frmMantenimientoUsuario$4.class
 Controlador\controladorPlanilla\prueba1.class
 Vista\Bancos\MdiBancos$7.class
@@ -24,9 +25,11 @@ Vista\frmMantenimientoBitacora$6.class
 Vista\frmProcesoPerfilUsuario$3.class
 Vista\frmMantenimientoUsuario$7.class
 Vista\frmProcesoAplicacionUsuario$8.class
+Controlador\clsMovimientoTransacciones.class
 Vista\frmProcesoAplicacionPerfil$9.class
 Vista\Bancos\MdiBancos$1.class
 Vista\MdiSeguridad$5.class
+Vista\vistaCuentasCorrientes\CCconciliacionBancaria$1.class
 Vista\frmLogin$5.class
 Vista\frmMantenimientoAplicaciones$5.class
 Vista\vistaCuentasCorrientes\NewJFrame$1.class
@@ -62,6 +65,7 @@ Controlador\Bancos\clsTipoCuenta.class
 Vista\frmMantenimientoBitacora.class
 Controlador\prueba.class
 Vista\vistaPlanilla\MdiPlanillas$2.class
+Modelo\MovimientoTransaccionesDAO.class
 Vista\MdiComercio$4.class
 Vista\frmProcesoAplicacionUsuario$5.class
 Vista\Bancos\MdiBancos$13.class
@@ -100,6 +104,7 @@ Vista\MdiSeguridad.class
 Controlador\Bancos\clsBitacoraBancaria.class
 Modelo\Bancos\BancoDAO.class
 Modelo\Conexion.class
+Vista\vistaCuentasCorrientes\CCconciliacionBancaria$2.class
 Vista\MdiSeguridad$3.class
 Controlador\Bancos\clsCuentaBancaria.class
 Vista\MdiSeguridad$6.class
