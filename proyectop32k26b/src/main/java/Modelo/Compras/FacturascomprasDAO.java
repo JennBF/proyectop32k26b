@@ -4,7 +4,7 @@
  */
 package Modelo.Compras;
 //Librerias
-import Controlador.Compras.clsFacturascompras ;
+import Controlador.Compras.clsFacturascompras;
 import Modelo.Conexion;
 import Modelo.BitacoraDAO;
 import Controlador.clsUsuarioConectado;
@@ -12,19 +12,21 @@ import Controlador.clsUsuarioConectado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
-/**
- *
- * @author Isaias Cedillo 9959-24-1672
- */
+
 public class FacturascomprasDAO {
-        private static final int APL_CODIGO = 3000; //codigo de app
-        public List<clsFacturascompras > listar() {
 
-        List<clsFacturascompras > lista = new ArrayList<>();
+    private static final int APL_CODIGO = 30001;
 
-        String sql = "SELECT * FROM Facturascompras ";
+    // LISTAR
+    public List<clsFacturascompras> listar() {
+
+        List<clsFacturascompras> lista = new ArrayList<>();
+
+        String sql = "SELECT * FROM Facturascompras";
 
         try (Connection conn = Conexion.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -32,95 +34,150 @@ public class FacturascomprasDAO {
 
             while (rs.next()) {
 
-                clsFacturascompras  factura = new clsFacturascompras ();
+                clsFacturascompras factura =
+                        new clsFacturascompras();
 
-                factura.setFaccomid(rs.getInt("Faccomid"));
-                factura.setFaccomnumero(rs.getString("Faccomnumero"));
-                factura.setFaccomfecha(rs.getDate("Faccomfecha"));
-                factura.setAcrecodigo(rs.getInt("Acrecodigo"));
-                factura.setFaccomsubtotal(rs.getDouble("Faccomsubtotal"));
-                factura.setFaccomiva(rs.getDouble("Faccomiva"));
-                factura.setFaccomtotal(rs.getDouble("Faccomtotal"));
-                factura.setFaccomestado(rs.getString("Faccomestado"));
+                factura.setFaccomid(
+                        rs.getInt("Faccomid"));
+
+                factura.setFaccomnumero(
+                        rs.getString("Faccomnumero"));
+
+                factura.setProvcodigo(
+                        rs.getInt("Provcodigo"));
+
+                factura.setProvnombre(
+                        rs.getString("Provnombre"));
+
+                factura.setImpid(
+                        rs.getInt("Impid"));
+
+                factura.setFaccomsubtotal(
+                        rs.getDouble("Faccomsubtotal"));
+
+                // IVA eliminado
+
+                factura.setFaccomtotal(
+                        rs.getDouble("Faccomtotal"));
 
                 lista.add(factura);
             }
-            } catch (Exception e) {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return lista;
     }
-        // INSERTAR
-    public void insert(clsFacturascompras  factura) {
 
-        String sql = "INSERT INTO Facturascompras  "
-                + "(Faccomnumero, Faccomfecha, Acrecodigo, "
-                + "Faccomsubtotal, Faccomiva, Faccomtotal, Faccomestado) "
-                + "VALUES (?,?,?,?,?,?,?)";
+    // INSERTAR
+    public int insert(clsFacturascompras factura) {
+
+        String sql =
+                "INSERT INTO Facturascompras "
+              + "(Faccomnumero, Provcodigo, "
+              + "Provnombre, Impid, "
+              + "Faccomsubtotal, Faccomtotal) "
+              + "VALUES (?,?,?,?,?,?)";
 
         try (Connection conn = Conexion.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement ps =
+                     conn.prepareStatement(
+                             sql,
+                             Statement.RETURN_GENERATED_KEYS)) {
 
-            ps.setString(1, factura.getFaccomnumero());
+            ps.setString(1,
+                    factura.getFaccomnumero());
 
-            // Conversión de java.util.Date a java.sql.Date
-            ps.setDate(2, new java.sql.Date(
-                    factura.getFaccomfecha().getTime()));
+            ps.setInt(2,
+                    factura.getProvcodigo());
 
-            ps.setInt(3, factura.getAcrecodigo());
-            ps.setDouble(4, factura.getFaccomsubtotal());
-            ps.setDouble(5, factura.getFaccomiva());
-            ps.setDouble(6, factura.getFaccomtotal());
-            ps.setString(7, factura.getFaccomestado());
-             ps.executeUpdate();
+            ps.setString(3,
+                    factura.getProvnombre());
 
-            new BitacoraDAO().insert(
-                    clsUsuarioConectado.getUsuId(),
-                    APL_CODIGO,
-                    "INSERT"
-            );
+            ps.setInt(4,
+                    factura.getImpid());
+
+            ps.setDouble(5,
+                    factura.getFaccomsubtotal());
+
+            // IVA eliminado
+
+            ps.setDouble(6,
+                    factura.getFaccomtotal());
+
+            ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+
+            if (rs.next()) {
+
+                new BitacoraDAO().insert(
+                        clsUsuarioConectado.getUsuId(),
+                        APL_CODIGO,
+                        "INSERT"
+                );
+
+                return rs.getInt(1);
+            }
 
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(
-                    "Error al insertar factura de compra", e);
-        }
-    }
-    // ACTUALIZAR
-    public void update(clsFacturascompras  factura) {
 
-        String sql = "UPDATE Facturascompras  SET "
-                + "Faccomnumero=?, "
-                + "Faccomfecha=?, "
-                + "Acrecodigo=?, "
-                + "Faccomsubtotal=?, "
-                + "Faccomiva=?, "
-                + "Faccomtotal=?, "
-                + "Faccomestado=? "
-                + "WHERE Faccomid=?";
+            e.printStackTrace();
+
+            throw new RuntimeException(
+                    "Error al insertar factura", e);
+        }
+
+        return -1;
+    }
+
+    // ACTUALIZAR
+    public void update(clsFacturascompras factura) {
+
+        String sql =
+                "UPDATE Facturascompras SET "
+              + "Faccomnumero=?, "
+              + "Provcodigo=?, "
+              + "Provnombre=?, "
+              + "Impid=?, "
+              + "Faccomsubtotal=?, "
+              + "Faccomtotal=? "
+              + "WHERE Faccomid=?";
 
         try (Connection conn = Conexion.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement ps =
+                     conn.prepareStatement(sql)) {
 
-            ps.setString(1, factura.getFaccomnumero());
+            ps.setString(1,
+                    factura.getFaccomnumero());
 
-            ps.setDate(2, new java.sql.Date(
-                    factura.getFaccomfecha().getTime()));
+            ps.setInt(2,
+                    factura.getProvcodigo());
 
-            ps.setInt(3, factura.getAcrecodigo());
-            ps.setDouble(4, factura.getFaccomsubtotal());
-            ps.setDouble(5, factura.getFaccomiva());
-            ps.setDouble(6, factura.getFaccomtotal());
-            ps.setString(7, factura.getFaccomestado());
+            ps.setString(3,
+                    factura.getProvnombre());
 
-            ps.setInt(8, factura.getFaccomid());
+            ps.setInt(4,
+                    factura.getImpid());
+
+            ps.setDouble(5,
+                    factura.getFaccomsubtotal());
+
+            // IVA eliminado
+
+            ps.setDouble(6,
+                    factura.getFaccomtotal());
+
+            ps.setInt(7,
+                    factura.getFaccomid());
 
             int rows = ps.executeUpdate();
 
             if (rows == 0) {
+
                 throw new RuntimeException(
-                        "No se encontró la factura para actualizar");
+                        "No se encontró la factura");
             }
 
             new BitacoraDAO().insert(
@@ -130,27 +187,33 @@ public class FacturascomprasDAO {
             );
 
         } catch (Exception e) {
+
             e.printStackTrace();
+
             throw new RuntimeException(
                     "Error al actualizar factura", e);
         }
     }
+
     // ELIMINAR
     public void delete(int idFactura) {
 
-        String sql = "DELETE FROM Facturascompras  "
-                + "WHERE Faccomid=?";
+        String sql =
+                "DELETE FROM Facturascompras "
+              + "WHERE Faccomid=?";
 
         try (Connection conn = Conexion.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement ps =
+                     conn.prepareStatement(sql)) {
 
             ps.setInt(1, idFactura);
 
             int rows = ps.executeUpdate();
 
             if (rows == 0) {
+
                 throw new RuntimeException(
-                        "No se encontró la factura para eliminar");
+                        "No se encontró la factura");
             }
 
             new BitacoraDAO().insert(
@@ -160,21 +223,26 @@ public class FacturascomprasDAO {
             );
 
         } catch (Exception e) {
+
             e.printStackTrace();
+
             throw new RuntimeException(
                     "Error al eliminar factura", e);
         }
     }
-     // CONSULTAR POR ID
-    public clsFacturascompras  query(int idFactura) {
 
-        clsFacturascompras  factura = null;
+    // CONSULTAR
+    public clsFacturascompras query(int idFactura) {
 
-        String sql = "SELECT * FROM Facturascompras  "
-                + "WHERE Faccomid=?";
+        clsFacturascompras factura = null;
+
+        String sql =
+                "SELECT * FROM Facturascompras "
+              + "WHERE Faccomid=?";
 
         try (Connection conn = Conexion.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement ps =
+                     conn.prepareStatement(sql)) {
 
             ps.setInt(1, idFactura);
 
@@ -182,21 +250,38 @@ public class FacturascomprasDAO {
 
                 if (rs.next()) {
 
-                    factura = new clsFacturascompras ();
+                    factura =
+                            new clsFacturascompras();
 
-                    factura.setFaccomid(rs.getInt("Faccomid"));
-                    factura.setFaccomnumero(rs.getString("Faccomnumero"));
-                    factura.setFaccomfecha(rs.getDate("Faccomfecha"));
-                    factura.setAcrecodigo(rs.getInt("Acrecodigo"));
-                    factura.setFaccomsubtotal(rs.getDouble("Faccomsubtotal"));
-                    factura.setFaccomiva(rs.getDouble("Faccomiva"));
-                    factura.setFaccomtotal(rs.getDouble("Faccomtotal"));
-                    factura.setFaccomestado(rs.getString("Faccomestado"));
+                    factura.setFaccomid(
+                            rs.getInt("Faccomid"));
+
+                    factura.setFaccomnumero(
+                            rs.getString("Faccomnumero"));
+
+                    factura.setProvcodigo(
+                            rs.getInt("Provcodigo"));
+
+                    factura.setProvnombre(
+                            rs.getString("Provnombre"));
+
+                    factura.setImpid(
+                            rs.getInt("Impid"));
+
+                    factura.setFaccomsubtotal(
+                            rs.getDouble("Faccomsubtotal"));
+
+                    // IVA eliminado
+
+                    factura.setFaccomtotal(
+                            rs.getDouble("Faccomtotal"));
                 }
             }
 
         } catch (Exception e) {
+
             e.printStackTrace();
+
             throw new RuntimeException(
                     "Error al consultar factura", e);
         }

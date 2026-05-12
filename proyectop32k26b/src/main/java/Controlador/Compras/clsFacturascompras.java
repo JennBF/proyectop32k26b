@@ -11,16 +11,18 @@ import java.util.Date;
  * @author Isaias Cedillo 9959-24-1672
  */
 public class clsFacturascompras  {
-    //Atributos basados en la base de datos de Maria Celeste
-private int Faccomid;
-private String Faccomnumero;
-private Date Faccomfecha;
-private int Acrecodigo;
-private double Faccomsubtotal;
-private double Faccomiva;
-private double Faccomtotal;
-private String Faccomestado;
-// GETTERS
+   // Atributos
+    private int Faccomid;
+    private String Faccomnumero;
+    private int Provcodigo;
+    private String Provnombre;
+    private int Impid;
+
+    // Se quitó Faccomiva
+    private double Faccomsubtotal;
+    private double Faccomtotal;
+
+    // GETTERS
     public int getFaccomid() {
         return Faccomid;
     }
@@ -29,31 +31,27 @@ private String Faccomestado;
         return Faccomnumero;
     }
 
-    public Date getFaccomfecha() {
-        return Faccomfecha;
+    public int getProvcodigo() {
+        return Provcodigo;
     }
 
-    public int getAcrecodigo() {
-        return Acrecodigo;
+    public String getProvnombre() {
+        return Provnombre;
+    }
+
+    public int getImpid() {
+        return Impid;
     }
 
     public double getFaccomsubtotal() {
         return Faccomsubtotal;
     }
 
-    public double getFaccomiva() {
-        return Faccomiva;
-    }
-
     public double getFaccomtotal() {
         return Faccomtotal;
     }
 
-    public String getFaccomestado() {
-        return Faccomestado;
-    }
-//SETTERS
-
+    // SETTERS
     public void setFaccomid(int Faccomid) {
         this.Faccomid = Faccomid;
     }
@@ -62,55 +60,76 @@ private String Faccomestado;
         this.Faccomnumero = Faccomnumero;
     }
 
-    public void setFaccomfecha(Date Faccomfecha) {
-        this.Faccomfecha = Faccomfecha;
+    public void setProvcodigo(int Provcodigo) {
+        this.Provcodigo = Provcodigo;
     }
 
-    public void setAcrecodigo(int Acrecodigo) {
-        this.Acrecodigo = Acrecodigo;
+    public void setProvnombre(String Provnombre) {
+        this.Provnombre = Provnombre;
+    }
+
+    public void setImpid(int Impid) {
+        this.Impid = Impid;
     }
 
     public void setFaccomsubtotal(double Faccomsubtotal) {
         this.Faccomsubtotal = Faccomsubtotal;
     }
 
-    public void setFaccomiva(double Faccomiva) {
-        this.Faccomiva = Faccomiva;
-    }
-
     public void setFaccomtotal(double Faccomtotal) {
         this.Faccomtotal = Faccomtotal;
     }
 
-    public void setFaccomestado(String Faccomestado) {
-        this.Faccomestado = Faccomestado;
+    // Constructor vacío
+    public clsFacturascompras() {
     }
-    //Constructores
-    public clsFacturascompras (int Faccomid, String Faccomnumero, Date Faccomfecha, int Acrecodigo, double Faccomsubtotal, double Faccomiva, double Faccomtotal, String Faccomestado) {
-    this.Faccomid = Faccomid;
-    this.Faccomnumero = Faccomnumero;
-    this.Faccomfecha = Faccomfecha;
-    this.Acrecodigo = Acrecodigo;
-    this.Faccomsubtotal = Faccomsubtotal;
-    this.Faccomiva = Faccomiva;
-    this.Faccomtotal = Faccomtotal;
-    this.Faccomestado = Faccomestado;
-}
-    public clsFacturascompras () {}
-    //Caso especial (ID autogenerado)
-    public clsFacturascompras (String Faccomnumero, Date Faccomfecha, int Acrecodigo, double Faccomsubtotal, double Faccomiva, double Faccomtotal, String Faccomestado) {
-    this.Faccomnumero = Faccomnumero;
-    this.Faccomfecha = Faccomfecha;
-    this.Acrecodigo = Acrecodigo;
-    this.Faccomsubtotal = Faccomsubtotal;
-    this.Faccomiva = Faccomiva;
-    this.Faccomtotal = Faccomtotal;
-    this.Faccomestado = Faccomestado;
-}
-    //To String
+
+    // Constructor sin ID
+    public clsFacturascompras(String Faccomnumero,
+                              int Provcodigo,
+                              String Provnombre,
+                              int Impid,
+                              double Faccomsubtotal,
+                              double Faccomtotal) {
+
+        this.Faccomnumero = Faccomnumero;
+        this.Provcodigo = Provcodigo;
+        this.Provnombre = Provnombre;
+        this.Impid = Impid;
+        this.Faccomsubtotal = Faccomsubtotal;
+        this.Faccomtotal = Faccomtotal;
+    }
+
+    // Constructor completo
+    public clsFacturascompras(int Faccomid,
+                              String Faccomnumero,
+                              int Provcodigo,
+                              String Provnombre,
+                              int Impid,
+                              double Faccomsubtotal,
+                              double Faccomtotal) {
+
+        this.Faccomid = Faccomid;
+        this.Faccomnumero = Faccomnumero;
+        this.Provcodigo = Provcodigo;
+        this.Provnombre = Provnombre;
+        this.Impid = Impid;
+        this.Faccomsubtotal = Faccomsubtotal;
+        this.Faccomtotal = Faccomtotal;
+    }
+
+    // toString
     @Override
     public String toString() {
-        return "clsFacturascompras {" + "Faccomid=" + Faccomid + ", Faccomnumero=" + Faccomnumero + ", Faccomfecha=" + Faccomfecha + ", Acrecodigo=" + Acrecodigo + ", Faccomsubtotal=" + Faccomsubtotal + ", Faccomiva=" + Faccomiva + ", Faccomtotal=" + Faccomtotal + ", Faccomestado=" + Faccomestado + '}';
+
+        return "clsFacturascompras{" +
+                "Faccomid=" + Faccomid +
+                ", Faccomnumero=" + Faccomnumero +
+                ", Provcodigo=" + Provcodigo +
+                ", Provnombre=" + Provnombre +
+                ", Impid=" + Impid +
+                ", Faccomsubtotal=" + Faccomsubtotal +
+                ", Faccomtotal=" + Faccomtotal +
+                '}';
     }
-    
 }

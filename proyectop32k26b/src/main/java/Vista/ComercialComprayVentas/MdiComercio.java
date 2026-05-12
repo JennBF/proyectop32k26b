@@ -38,6 +38,7 @@ public class MdiComercio extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         mnuCompras = new javax.swing.JMenuItem();
+        proveedor = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -90,6 +91,14 @@ public class MdiComercio extends javax.swing.JFrame {
             }
         });
         jMenu2.add(mnuCompras);
+
+        proveedor.setText("Productos");
+        proveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proveedorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(proveedor);
 
         mnuGeneral.add(jMenu2);
 
@@ -156,6 +165,19 @@ public class MdiComercio extends javax.swing.JFrame {
         ventana.setVisible(true);
     }//GEN-LAST:event_mnuComprasActionPerformed
 
+    private void proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveedorActionPerformed
+        // TODO add your handling code here:
+        frmProductos ventana = new frmProductos();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation(
+        (desktopSize.width - FrameSize.width) / 2,
+        (desktopSize.height - FrameSize.height) / 2
+        );
+        ventana.setVisible(true);
+    }//GEN-LAST:event_proveedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,5 +222,6 @@ public class MdiComercio extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCompras;
     private javax.swing.JMenuBar mnuGeneral;
     private javax.swing.JCheckBoxMenuItem mnuSalirSistema;
+    private javax.swing.JMenuItem proveedor;
     // End of variables declaration//GEN-END:variables
 }
