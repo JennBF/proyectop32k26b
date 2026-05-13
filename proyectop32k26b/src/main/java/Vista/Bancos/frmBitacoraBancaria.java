@@ -5,7 +5,6 @@
 package Vista.Bancos;
 // Angoly Camila Araujo Mayen 9959 - 24 - 17
 import Controlador.Bancos.clsBitacoraBancaria;
-import Controlador.clsUsuarioConectado;
 import Modelo.Bancos.BitacoraBancariaDAO;
 import java.io.File;
 import java.util.Date;
@@ -76,7 +75,7 @@ private void llenarTabla(List<clsBitacoraBancaria> lista) {
         jLabel2 = new javax.swing.JLabel();
         fechaFin = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel3.setText("Bitácora Bancaria ");
@@ -144,7 +143,7 @@ private void llenarTabla(List<clsBitacoraBancaria> lista) {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(43, 286, Short.MAX_VALUE)
+                        .addGap(43, 279, Short.MAX_VALUE)
                         .addComponent(btnBuscar)
                         .addGap(47, 47, 47)
                         .addComponent(btnLimpiar)
@@ -203,9 +202,8 @@ private void llenarTabla(List<clsBitacoraBancaria> lista) {
                     .addComponent(btnBuscar)
                     .addComponent(btnLimpiar)
                     .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -222,7 +220,20 @@ private void llenarTabla(List<clsBitacoraBancaria> lista) {
     }//GEN-LAST:event_cboxTipoBusquedaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+          try {
+            String ruta = "src\\main\\java\\Ayudas\\Bancos\\Ayuda Bancos.chm";
+
+            File archivo = new File(ruta);
+
+            if (archivo.exists()) {
+                Runtime.getRuntime().exec("hh.exe \"" + ruta + "\"");
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }     
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed

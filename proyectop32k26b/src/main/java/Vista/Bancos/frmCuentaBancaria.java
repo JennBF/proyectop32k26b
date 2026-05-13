@@ -2,11 +2,10 @@ package Vista.Bancos;
 
 // Imports necesarios arriba del todo
 import Controlador.Bancos.clsCuentaBancaria;
-import com.toedter.calendar.JDateChooser;
+import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class frmCuentaBancaria extends javax.swing.JInternalFrame {
 
@@ -248,8 +247,6 @@ private void limpiarCampos() {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel1.setText("Datos del Registro:");
 
@@ -284,6 +281,11 @@ private void limpiarCampos() {
 
         btnAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAyuda.setText("Ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaActionPerformed(evt);
+            }
+        });
 
         tblTipoCuenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -425,6 +427,23 @@ private void limpiarCampos() {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
+        try {
+            String ruta = "src\\main\\java\\Ayudas\\Bancos\\Ayuda Bancos.chm";
+
+            File archivo = new File(ruta);
+
+            if (archivo.exists()) {
+                Runtime.getRuntime().exec("hh.exe \"" + ruta + "\"");
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAyudaActionPerformed
 
     /**
      * @param args the command line arguments

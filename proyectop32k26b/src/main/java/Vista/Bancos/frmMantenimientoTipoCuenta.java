@@ -1,9 +1,10 @@
 package Vista.Bancos;
 
 import Controlador.Bancos.clsTipoCuenta;
+import java.io.File;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class frmMantenimientoTipoCuenta extends javax.swing.JInternalFrame {
 
@@ -196,8 +197,6 @@ btnEliminar.addActionListener(e -> {
         TCidcuenta = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel1.setText("Datos del Registro:");
 
@@ -242,6 +241,11 @@ btnEliminar.addActionListener(e -> {
         btnAyuda.setBackground(new java.awt.Color(204, 204, 204));
         btnAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAyuda.setText("Ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaActionPerformed(evt);
+            }
+        });
 
         tblTipoCuenta.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         tblTipoCuenta.setModel(new javax.swing.table.DefaultTableModel(
@@ -333,6 +337,23 @@ btnEliminar.addActionListener(e -> {
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescripcionActionPerformed
+
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
+        try {
+            String ruta = "src\\main\\java\\Ayudas\\Bancos\\Ayuda Bancos.chm";
+
+            File archivo = new File(ruta);
+
+            if (archivo.exists()) {
+                Runtime.getRuntime().exec("hh.exe \"" + ruta + "\"");
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAyudaActionPerformed
 
     /**
      * @param args the command line arguments
