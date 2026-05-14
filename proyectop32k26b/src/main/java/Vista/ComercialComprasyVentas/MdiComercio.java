@@ -9,6 +9,7 @@ import Vista.ComercialComprasyVentas.frmCompras;
 import java.awt.Dimension;
 import java.io.File;
 import javax.swing.JOptionPane;
+import Vista.ComercialComprasyVentas.frmVentas;
 
 /**
  *
@@ -37,7 +38,8 @@ public class MdiComercio extends javax.swing.JFrame {
         mnuArchivo = new javax.swing.JMenu();
         mnuSalirSistema = new javax.swing.JCheckBoxMenuItem();
         mnuAyudas = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        ventasmenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuCompras = new javax.swing.JMenuItem();
         proveedor = new javax.swing.JMenuItem();
@@ -81,8 +83,22 @@ public class MdiComercio extends javax.swing.JFrame {
         });
         mnuGeneral.add(mnuAyudas);
 
-        jMenu1.setText("Ventas");
-        mnuGeneral.add(jMenu1);
+        ventasmenu.setText("Ventas");
+        ventasmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ventasmenuActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Ventas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        ventasmenu.add(jMenuItem1);
+
+        mnuGeneral.add(ventasmenu);
 
         jMenu2.setText("Compras");
 
@@ -180,6 +196,30 @@ public class MdiComercio extends javax.swing.JFrame {
         ventana.setVisible(true);
     }//GEN-LAST:event_proveedorActionPerformed
 
+    private void ventasmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasmenuActionPerformed
+
+        System.out.println("Ventas");
+        frmVentas ventana = new frmVentas();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        ventana.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ventasmenuActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+      
+        System.out.println("Ventas");
+        frmVentas ventana = new frmVentas();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        ventana.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,13 +257,14 @@ public class MdiComercio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu mnuArchivo;
     private javax.swing.JMenu mnuAyudas;
     private javax.swing.JMenuItem mnuCompras;
     private javax.swing.JMenuBar mnuGeneral;
     private javax.swing.JCheckBoxMenuItem mnuSalirSistema;
     private javax.swing.JMenuItem proveedor;
+    private javax.swing.JMenu ventasmenu;
     // End of variables declaration//GEN-END:variables
 }
