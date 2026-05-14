@@ -1,10 +1,10 @@
 package Vista.Bancos;
 
 import Controlador.Bancos.clsMovimientoBancario;
+import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+<<<<<<< HEAD
 import java.sql.Connection;
 import Modelo.Conexion;
 import java.io.File;
@@ -15,6 +15,9 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+=======
+import javax.swing.table.DefaultTableModel;
+>>>>>>> e9c538deaf9d8b393e0514ddecc7cd504e3e4a68
 
 public class frmMovimientoBancario extends javax.swing.JInternalFrame {
     
@@ -404,6 +407,11 @@ private void limpiarCampos() {
         btnAyuda.setBackground(new java.awt.Color(204, 204, 204));
         btnAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAyuda.setText("Ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaActionPerformed(evt);
+            }
+        });
 
         tblMovimientoBancario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -552,6 +560,23 @@ private void limpiarCampos() {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
+        try {
+            String ruta = "src\\main\\java\\Ayudas\\Bancos\\Ayuda Bancos.chm";
+
+            File archivo = new File(ruta);
+
+            if (archivo.exists()) {
+                Runtime.getRuntime().exec("hh.exe \"" + ruta + "\"");
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAyudaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,13 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista.Bancos;
-import Controlador.Bancos.clsCliente;
-import Controlador.clsUsuarioConectado;
-import Modelo.BitacoraDAO;
-import Modelo.Bancos.ClientesDAO;
-import Modelo.Conexion;
-import java.sql.Connection;
 import java.io.File;
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
 /*import net.sf.jasperreports.engine.JasperCompileManager;
@@ -18,6 +13,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 */
+=======
+import java.sql.Connection;
+
+>>>>>>> e9c538deaf9d8b393e0514ddecc7cd504e3e4a68
 /**
  *
  * @Angoly Camila Araujo Mayen 9959-24-17623
@@ -381,7 +380,20 @@ private final Modelo.Bancos.ClientesDAO clientesDAO = new Modelo.Bancos.Clientes
     }//GEN-LAST:event_reporteActionPerformed
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
-        
+        try {
+            String ruta = "src\\main\\java\\Ayudas\\Bancos\\Ayuda Bancos.chm";
+
+            File archivo = new File(ruta);
+
+            if (archivo.exists()) {
+                Runtime.getRuntime().exec("hh.exe \"" + ruta + "\"");
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }        
     }//GEN-LAST:event_ayudaActionPerformed
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
