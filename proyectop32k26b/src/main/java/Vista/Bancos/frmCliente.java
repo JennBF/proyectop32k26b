@@ -4,7 +4,6 @@
  */
 package Vista.Bancos;
 import java.io.File;
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
 /*import net.sf.jasperreports.engine.JasperCompileManager;
@@ -13,10 +12,8 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 */
-=======
 import java.sql.Connection;
 
->>>>>>> e9c538deaf9d8b393e0514ddecc7cd504e3e4a68
 /**
  *
  * @Angoly Camila Araujo Mayen 9959-24-17623

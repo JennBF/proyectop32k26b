@@ -8,6 +8,7 @@ import Controlador.Bancos.clsBitacoraBancaria;
 import Modelo.Bancos.BitacoraBancariaDAO;
 import java.util.Date;
 import java.util.List;
+import java.io.File;
 
 public class frmBitacoraBancaria extends javax.swing.JInternalFrame {
 
@@ -214,11 +215,7 @@ public class frmBitacoraBancaria extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-<<<<<<< HEAD
-                        .addGap(43, 495, Short.MAX_VALUE)
-=======
                         .addGap(43, 279, Short.MAX_VALUE)
->>>>>>> e9c538deaf9d8b393e0514ddecc7cd504e3e4a68
                         .addComponent(btnBuscar)
                         .addGap(47, 47, 47)
                         .addComponent(btnLimpiar)
@@ -276,16 +273,9 @@ public class frmBitacoraBancaria extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(btnLimpiar)
-<<<<<<< HEAD
                     .addComponent(ayudas))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-=======
-                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
->>>>>>> e9c538deaf9d8b393e0514ddecc7cd504e3e4a68
         );
 
         pack();
@@ -300,11 +290,10 @@ public class frmBitacoraBancaria extends javax.swing.JInternalFrame {
         fechaFin.setVisible(esFecha);
     }//GEN-LAST:event_cboxTipoBusquedaActionPerformed
 
-<<<<<<< HEAD
     private void ayudasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudasActionPerformed
        
     }//GEN-LAST:event_ayudasActionPerformed
-=======
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
           try {
             String ruta = "src\\main\\java\\Ayudas\\Bancos\\Ayuda Bancos.chm";
@@ -321,7 +310,6 @@ public class frmBitacoraBancaria extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }     
     }//GEN-LAST:event_jButton2ActionPerformed
->>>>>>> e9c538deaf9d8b393e0514ddecc7cd504e3e4a68
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
          btnBuscarActionPerformed(evt);

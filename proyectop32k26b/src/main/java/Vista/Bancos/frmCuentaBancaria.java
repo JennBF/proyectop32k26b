@@ -5,7 +5,6 @@ import Controlador.Bancos.clsCuentaBancaria;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-<<<<<<< HEAD
 import java.sql.Connection;
 import Modelo.Conexion;
 import java.io.File;
@@ -16,9 +15,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
-=======
 import javax.swing.table.DefaultTableModel;
->>>>>>> e9c538deaf9d8b393e0514ddecc7cd504e3e4a68
 
 public class frmCuentaBancaria extends javax.swing.JInternalFrame {
 
