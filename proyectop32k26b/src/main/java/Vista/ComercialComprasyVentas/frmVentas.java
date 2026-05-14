@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Marice
  */
-public class frmVentas extends javax.swing.JFrame {
+public class frmVentas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmVentas
@@ -60,7 +60,11 @@ public class frmVentas extends javax.swing.JFrame {
         limpiarCampos = new javax.swing.JButton();
         calcularTotal = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jLabel8.setText("Subtotal");
 

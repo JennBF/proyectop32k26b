@@ -10,6 +10,9 @@ import java.awt.Dimension;
 import java.io.File;
 import javax.swing.JOptionPane;
 import Vista.ComercialComprasyVentas.frmVentas;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
 
 /**
  *
@@ -22,8 +25,33 @@ public class MdiComercio extends javax.swing.JFrame {
      */
     public MdiComercio() {
         initComponents();
+        setLocationRelativeTo(null);
+        this.setExtendedState(MdiComercio.MAXIMIZED_BOTH);
+        this.setTitle("Sistema Comercial - Compras y Ventas");
+        cerrar();
     }
 
+    private void cerrar() {
+        try {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                public void windowsClosing(WindowEvent e) {
+                    confirmarSalida();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void confirmarSalida() {
+        int valor = JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (valor == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "Gracias por su visita, hasta pronto", "Gracias", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -209,15 +237,12 @@ public class MdiComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_ventasmenuActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-      
-        System.out.println("Ventas");
         frmVentas ventana = new frmVentas();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         ventana.setVisible(true);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
