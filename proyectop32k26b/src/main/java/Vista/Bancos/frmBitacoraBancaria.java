@@ -291,11 +291,8 @@ public class frmBitacoraBancaria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cboxTipoBusquedaActionPerformed
 
     private void ayudasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudasActionPerformed
-       
-    }//GEN-LAST:event_ayudasActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-          try {
+      //Corregí errores del boton de Ayuda (Angel Méndez)
+        try {
             String ruta = "src\\main\\java\\Ayudas\\Bancos\\Ayuda Bancos.chm";
 
             File archivo = new File(ruta);
@@ -308,7 +305,11 @@ public class frmBitacoraBancaria extends javax.swing.JInternalFrame {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }     
+        }   
+    }//GEN-LAST:event_ayudasActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
