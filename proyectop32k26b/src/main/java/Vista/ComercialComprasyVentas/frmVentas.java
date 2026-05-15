@@ -3,14 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista.ComercialComprasyVentas;
-
+import Controlador.Ventas.clsFacturasDetallesVentas;
+import Controlador.Ventas.clsFacturasventas;
+import Modelo.Ventas.clsVentasDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;            
 /**
  *
  * @author Marice
  */
-public class frmVentas extends javax.swing.JFrame {
+public class frmVentas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmVentas
