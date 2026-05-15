@@ -188,6 +188,8 @@ private void cargarTablaDetalles() {
         Delete = new javax.swing.JButton();
         Clean = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
+        tablaproveedores = new javax.swing.JButton();
+        tablaproductos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,7 +206,7 @@ private void cargarTablaDetalles() {
         Query.setText("Buscar");
         Query.addActionListener(this::QueryActionPerformed);
 
-        jLabel4.setText("Subtotal");
+        jLabel4.setText("IVA");
 
         Update.setText("Actualizar");
         Update.addActionListener(this::UpdateActionPerformed);
@@ -212,7 +214,7 @@ private void cargarTablaDetalles() {
         Faccomtotal_txt.setEditable(false);
         Faccomtotal_txt.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel5.setText("Subtotal");
+        jLabel5.setText("Total");
 
         facturadetallescompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -274,18 +276,36 @@ private void cargarTablaDetalles() {
         Exit.setText("Salir");
         Exit.addActionListener(this::ExitActionPerformed);
 
+        tablaproveedores.setText("Consultar Proveedores disponibles");
+        tablaproveedores.addActionListener(this::tablaproveedoresActionPerformed);
+
+        tablaproductos.setText("Consultar productos disponibles");
+        tablaproductos.addActionListener(this::tablaproductosActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(Clean)
-                .addGap(18, 18, 18)
-                .addComponent(Exit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Clean)
+                        .addGap(18, 18, 18)
+                        .addComponent(Exit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Procodigo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(149, 149, 149)
+                                .addComponent(tablaproveedores))
+                            .addComponent(tablaproductos, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -294,10 +314,7 @@ private void cargarTablaDetalles() {
                             .addGap(15, 15, 15)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Procodigo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
+                                    .addGap(192, 192, 192)
                                     .addComponent(jLabel6)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Faccomestado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -370,7 +387,14 @@ private void cargarTablaDetalles() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(322, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(Procodigo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tablaproveedores))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                .addComponent(tablaproductos)
+                .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Clean)
@@ -381,8 +405,6 @@ private void cargarTablaDetalles() {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(11, 11, 11)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(Procodigo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel6)
                         .addComponent(Faccomestado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -910,6 +932,15 @@ private void cargarTablaDetalles() {
     }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tablaproveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablaproveedoresActionPerformed
+        // TODO add your handling code here:
+        //boton no disponible debido a la falta de desarrollo del form
+    }//GEN-LAST:event_tablaproveedoresActionPerformed
+
+    private void tablaproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablaproductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaproductosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -972,5 +1003,7 @@ private void cargarTablaDetalles() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablafacturascompras;
+    private javax.swing.JButton tablaproductos;
+    private javax.swing.JButton tablaproveedores;
     // End of variables declaration//GEN-END:variables
 }
