@@ -195,6 +195,7 @@ private void cargarTablaDetalles() {
 
         Faccomsubtotal_txt.setEditable(false);
         Faccomsubtotal_txt.setBackground(new java.awt.Color(204, 204, 204));
+        Faccomsubtotal_txt.addActionListener(this::Faccomsubtotal_txtActionPerformed);
 
         jLabel13.setText("ID");
 
@@ -204,7 +205,7 @@ private void cargarTablaDetalles() {
         Query.setText("Buscar");
         Query.addActionListener(this::QueryActionPerformed);
 
-        jLabel4.setText("Subtotal");
+        jLabel4.setText("IVA");
 
         Update.setText("Actualizar");
         Update.addActionListener(this::UpdateActionPerformed);
@@ -212,7 +213,7 @@ private void cargarTablaDetalles() {
         Faccomtotal_txt.setEditable(false);
         Faccomtotal_txt.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel5.setText("Subtotal");
+        jLabel5.setText("Total");
 
         facturadetallescompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -909,6 +910,10 @@ private void cargarTablaDetalles() {
         );
     }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Faccomsubtotal_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Faccomsubtotal_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Faccomsubtotal_txtActionPerformed
 
     /**
      * @param args the command line arguments
