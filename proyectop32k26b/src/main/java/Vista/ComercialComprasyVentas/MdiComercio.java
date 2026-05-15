@@ -8,13 +8,11 @@ import java.awt.Dimension;
 import java.io.File;
 import javax.swing.JOptionPane;
 import Vista.ComercialComprasyVentas.frmVentas;
-<<<<<<< HEAD
-import Vista.ComercialComprasyVentas.frmCompras;
-=======
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
->>>>>>> origin/fix-conflict
+
 
 /**
  *
