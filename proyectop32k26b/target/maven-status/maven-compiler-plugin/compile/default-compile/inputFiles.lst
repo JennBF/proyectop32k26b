@@ -1,9 +1,11 @@
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Bancos\TipoCuentaDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\controladorPlanilla\prueba1.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Logistica\clsPedidos.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Ventas\clsFacturasDetallesVentas.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Bancos\clsCuentaBancaria.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Logistica\clsDetalleArribo.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\modeloPlanilla\DetalleConceptosPlanillaDAO.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Compras\ProductosDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\modeloPlanilla\DepartamentoDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\vistaPlanilla\frmMantenimientoConceptos.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\Logistica\frmMantenimientoPedidos.java
@@ -16,6 +18,8 @@ C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlad
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Logistica\LineaDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Logistica\PedidosDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\modeloCuentasCorrientes\provicionalDao.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\ComercialComprasyVentas\frmProductos.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Compras\clsFacturascompras.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\frmMantenimientoBitacora.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\modeloCuentasCorrientes\cuentasPorCobrarDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Logistica\clsMovimientosInventario.java
@@ -29,9 +33,9 @@ C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlad
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\controladorCuentasCorrientes\clsAcreedor.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\clsUsuarioConectado.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\clsAplicaciones.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\ComercialComprasyVentas\frmCompras.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\frmMantenimientoUsuario.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\vistaCuentasCorrientes\MdiGeneralCC.java
-C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\MdiComercio.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\AsignacionPerfilUsuarioDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Logistica\BodegasDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\vistaPlanilla\MdiPlanillas.java
@@ -55,6 +59,7 @@ C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlad
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\Bancos\frmBanco.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\frmRestablecerContraseña.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\controladorPlanilla\clsPlanillaEncabezado.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\ComercialComprasyVentas\MdiComercio.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\modeloPlanilla\PlanillaEncabezadoDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\BitacoraDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\Bancos\frmCatTipoTransaccion.java
@@ -65,6 +70,7 @@ C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\ayuda\Ver
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\ComisionesVentas\clsReportes.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Logistica\clsBodegas.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Logistica\clsLinea.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Compras\FacturadetallecomprasDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\clsUsuario.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\Bancos\frmMovimientoBancario.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\frmMantenimientoAplicaciones.java
@@ -87,6 +93,7 @@ C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\vis
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\Bancos\frmConciliacionBancaria.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\Logistica\frmAyuda.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Bancos\BancoDAO.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Compras\clsProveedor.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Logistica\TransportistasDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Bancos\clsBanco.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Logistica\ExistenciasDAO.java
@@ -106,8 +113,13 @@ C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlad
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\clsPerfil.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\vistaPlanilla\frmMantenimientoDepartamento.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\controladorPlanilla\clsConceptosPlanillas.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Compras\clsProductos.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Logistica\clsExistencias.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Compras\clsFacturadetallecompras.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\Ventas\clsFacturasventas.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\frmProcesoAplicacionPerfil.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Compras\FacturascomprasDAO.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Ventas\clsVentasDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\PerfilDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\Logistica\frmMantenimientoStock.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\modeloCuentasCorrientes\AcreedorDAO.java
@@ -124,6 +136,9 @@ C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlad
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Controlador\prueba.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\modeloCuentasCorrientes\cuentasporpagarDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\AplicacionesDAO.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Compras\ProveedorDAO.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\ComercialComprasyVentas\frmVentas.java
+C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\ComercialComprasyVentas\frmMantenimientoProveedores.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\Bancos\CatEstadoConciliacionDAO.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Vista\vistaCuentasCorrientes\NewJFrame.java
 C:\Users\Enrique\Desktop\proyectop32k26b\proyectop32k26b\src\main\java\Modelo\PermisosDAO.java

@@ -6,12 +6,12 @@ package Vista.Bancos;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-/*import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
-*/
+
 import java.sql.Connection;
 
 /**
@@ -369,7 +369,7 @@ private final Modelo.Bancos.ClientesDAO clientesDAO = new Modelo.Bancos.Clientes
         
         java.util.Map<String, Object> parametros = new java.util.HashMap<>();
         
-        /*net.sf.jasperreports.engine.JasperReport reporte =
+        net.sf.jasperreports.engine.JasperReport reporte =
             net.sf.jasperreports.engine.JasperCompileManager.compileReport(ruta);
         
         net.sf.jasperreports.engine.JasperPrint print =
@@ -383,7 +383,7 @@ private final Modelo.Bancos.ClientesDAO clientesDAO = new Modelo.Bancos.Clientes
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         frame.add(viewer);
-        frame.setVisible(true);*/
+        frame.setVisible(true);
         
     } catch (Exception e) {
         e.printStackTrace();

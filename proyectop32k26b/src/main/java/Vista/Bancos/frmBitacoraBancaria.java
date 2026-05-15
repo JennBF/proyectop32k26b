@@ -421,12 +421,41 @@ public class frmBitacoraBancaria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        txtBuscar.setText("");
-        fechaInicio.setDate(null);
-        fechaFin.setDate(null);
-        cboxTipoBusqueda.setSelectedIndex(0);
-        // Dispara cboxTipoBusquedaActionPerformed → oculta fechas y muestra txtBuscar
-        cargarTodos();
+         int confirmacion = javax.swing.JOptionPane.showConfirmDialog(
+        this,
+        "¿Está seguro que desea eliminar TODOS los registros de la bitácora?\nEsta acción no se puede deshacer.",
+        "Confirmar limpieza", //Para confirmar la eliminación de datos
+        javax.swing.JOptionPane.YES_NO_OPTION,
+        javax.swing.JOptionPane.WARNING_MESSAGE
+    );
+
+    if (confirmacion == javax.swing.JOptionPane.YES_OPTION) {
+        boolean exito = bitacoraDAO.deleteAll();
+
+        if (exito) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Bitácora limpiada correctamente.",
+                "Éxito",
+                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Ocurrió un error al limpiar la bitácora.",
+                "Error",
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // Limpiar filtros y recargar tabla (vacía)
+    txtBuscar.setText("");
+    fechaInicio.setDate(null);
+    fechaFin.setDate(null);
+    cboxTipoBusqueda.setSelectedIndex(0);
+    txtBuscar.setVisible(true);
+    jLabel1.setVisible(false);
+    jLabel2.setVisible(false);
+    fechaInicio.setVisible(false);
+    fechaFin.setVisible(false);
+    cargarTodos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
 

@@ -5,11 +5,11 @@ import Controlador.Bancos.clsConciliacionBancaria;
 import Modelo.Bancos.ConciliacionBancariaDAO;
 import java.io.File;
 import java.sql.Connection;
-//import net.sf.jasperreports.engine.JasperCompileManager;
-//import net.sf.jasperreports.engine.JasperFillManager;
-//import net.sf.jasperreports.engine.JasperPrint;
-//import net.sf.jasperreports.engine.JasperReport;
-//import net.sf.jasperreports.view.JasperViewer;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 public class frmConciliacionBancaria extends javax.swing.JInternalFrame {
@@ -477,20 +477,20 @@ try {
 
             java.util.Map<String, Object> parametros = new java.util.HashMap<>();
 
-            //net.sf.jasperreports.engine.JasperReport reporte =
-            //   net.sf.jasperreports.engine.JasperCompileManager.compileReport(ruta);
+            net.sf.jasperreports.engine.JasperReport reporte =
+               net.sf.jasperreports.engine.JasperCompileManager.compileReport(ruta);
 
-            //net.sf.jasperreports.engine.JasperPrint print =
-            //    net.sf.jasperreports.engine.JasperFillManager.fillReport(reporte, parametros, conn);
+            net.sf.jasperreports.engine.JasperPrint print =
+                net.sf.jasperreports.engine.JasperFillManager.fillReport(reporte, parametros, conn);
 
-            //net.sf.jasperreports.engine.JasperExportManager.exportReportToPdfFile(print,"reporte.pdf");
-            //net.sf.jasperreports.swing.JRViewer viewer = new net.sf.jasperreports.swing.JRViewer(print);
+            net.sf.jasperreports.engine.JasperExportManager.exportReportToPdfFile(print,"reporte.pdf");
+            net.sf.jasperreports.swing.JRViewer viewer = new net.sf.jasperreports.swing.JRViewer(print);
 
             javax.swing.JFrame frame = new javax.swing.JFrame("Reporte de Estado Conciliacion");
             frame.setSize(800, 600);
             frame.setLocationRelativeTo(null);
             frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
-            //frame.add(viewer);
+            frame.add(viewer);
             frame.setVisible(true);
 
         } catch (Exception e) {
