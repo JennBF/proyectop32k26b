@@ -12,19 +12,19 @@ import java.lang.Process;
 import java.lang.Runtime;
 
 import javax.swing.JOptionPane;
-<<<<<<< HEAD
 
-import Vista.ComercialComprasyVentas.frmVentas;
+import Vista.ComercialComprasyVentas.frmCompras;
+
 import Vista.ComercialComprasyVentas.frmMantenimientoProveedores; 
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-=======
+
 import Vista.ComercialComprasyVentas.frmVentas;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
->>>>>>> origin/CM9959-23-3775
+
 import javax.swing.JFrame;
 
 
