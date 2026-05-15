@@ -7,7 +7,8 @@ import Controlador.Ventas.clsFacturasDetallesVentas;
 import Controlador.Ventas.clsFacturasventas;
 import Modelo.Ventas.clsVentasDAO;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;            
+import javax.swing.table.DefaultTableModel; 
+import java.util.List;
 /**
  *
  * @author Marice
