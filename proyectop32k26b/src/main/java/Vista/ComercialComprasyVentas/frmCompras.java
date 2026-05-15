@@ -13,6 +13,15 @@ import java.io.File;
 import javax.swing.table.DefaultTableModel;
 import Modelo.BitacoraDAO;
 import Controlador.clsUsuarioConectado;
+import Modelo.Conexion;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author isaia
@@ -236,6 +245,7 @@ private void cargarTablaDetalles() {
         jScrollPane1.setViewportView(tablafacturascompras);
 
         jButton1.setText("Reporte");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jLabel8.setText("DETALLES");
 
@@ -868,6 +878,37 @@ private void cargarTablaDetalles() {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ExitActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+            try {
+        Conexion cn = new Conexion();
+        Connection con = cn.getConnection();
+
+        if (con == null) {
+            JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+            return;
+        }
+
+        String rutaReporte = "src\\main\\java\\Reportes\\ComprayVentas\\reporteCompras.jasper";
+
+        Map<String, Object> parametros = new HashMap<>();
+
+        JasperPrint reporte = JasperFillManager.fillReport(
+                rutaReporte,
+                parametros,
+                con
+        );
+
+        JasperViewer.viewReport(reporte, false);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(
+                null,
+                "Error al generar el reporte:\n" + e.getMessage()
+        );
+    }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
