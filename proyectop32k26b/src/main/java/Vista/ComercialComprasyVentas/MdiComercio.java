@@ -43,11 +43,18 @@ public class MdiComercio extends javax.swing.JFrame {
      */
     public MdiComercio() {
         initComponents();
-        setLocationRelativeTo(null);
-        this.setExtendedState(MdiComercio.MAXIMIZED_BOTH);
-        this.setTitle("Sistema Comercial - Compras y Ventas");
-        cerrar();
-    }
+    
+    // ========================================================
+    // SOLUCIÓN: Forzar la aparición del jDesktopPane en la ventana
+    // ========================================================
+    this.setContentPane(jDesktopPane1); 
+    // ========================================================
+
+    setLocationRelativeTo(null);
+    this.setExtendedState(MdiComercio.MAXIMIZED_BOTH);
+    this.setTitle("Sistema Comercial - Compras y Ventas");
+    cerrar();
+}
 
     private void cerrar() {
         try {
@@ -80,6 +87,7 @@ public class MdiComercio extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane3 = new javax.swing.JDesktopPane();
         mnuGeneral = new javax.swing.JMenuBar();
         mnuArchivo = new javax.swing.JMenu();
         mnuSalirSistema = new javax.swing.JCheckBoxMenuItem();
@@ -106,6 +114,17 @@ public class MdiComercio extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jDesktopPane3Layout = new javax.swing.GroupLayout(jDesktopPane3);
+        jDesktopPane3.setLayout(jDesktopPane3Layout);
+        jDesktopPane3Layout.setHorizontalGroup(
+            jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 386, Short.MAX_VALUE)
+        );
+        jDesktopPane3Layout.setVerticalGroup(
+            jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 279, Short.MAX_VALUE)
+        );
 
         mnuArchivo.setText("Archivo");
         mnuArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -200,11 +219,11 @@ public class MdiComercio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane3)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addComponent(jDesktopPane3)
         );
 
         pack();
@@ -362,6 +381,7 @@ public class MdiComercio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane jDesktopPane3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
