@@ -4,17 +4,18 @@
  */
 package Vista.ComercialComprasyVentas;
 
+import Modelo.Ventas.clsVendedoresDAO;
+import Controlador.Ventas.clsVendedores;
 import Modelo.Conexion;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel; 
 import java.util.List;
-import Modelo.Ventas.clsVendedoresDAO;
-import Controlador.Ventas.clsVendedores;
+
 /**
  *
  * @author Marice
  */
-public class frmVendedores extends javax.swing.JFrame {
+public class frmVendedores extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmVendedores
@@ -52,6 +53,8 @@ public class frmVendedores extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnsalir = new javax.swing.JButton();
+        btnsalir1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +79,7 @@ public class frmVendedores extends javax.swing.JFrame {
             }
         });
 
+        TablaV.setForeground(new java.awt.Color(0, 102, 255));
         TablaV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -84,9 +88,12 @@ public class frmVendedores extends javax.swing.JFrame {
                 "ID Vendedores", "Codigo del empleado", "Nombre ", "Telefono", "Direccion", "Correo", "Comisiones"
             }
         ));
+        TablaV.setGridColor(new java.awt.Color(102, 204, 255));
+        TablaV.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(TablaV);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 102, 204));
         jLabel8.setText("Vendedores");
 
         btnModificar.setText("Modificar");
@@ -103,16 +110,40 @@ public class frmVendedores extends javax.swing.JFrame {
             }
         });
 
+        btnsalir.setBackground(new java.awt.Color(204, 0, 0));
+        btnsalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnsalir.setText("Salir");
+        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalirActionPerformed(evt);
+            }
+        });
+
+        btnsalir1.setBackground(new java.awt.Color(204, 0, 0));
+        btnsalir1.setForeground(new java.awt.Color(255, 255, 255));
+        btnsalir1.setText("Salir");
+        btnsalir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalir1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(btnModificar)
+                .addGap(26, 26, 26)
+                .addComponent(btnEliminar)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -134,30 +165,36 @@ public class frmVendedores extends javax.swing.JFrame {
                                 .addGap(11, 11, 11)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVenDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtVenTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtVenCorreo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtVenDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtVenTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtVenCorreo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtVenComisiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtVenComisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap())))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(40, 40, 40))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(btnModificar)
-                .addGap(26, 26, 26)
-                .addComponent(btnEliminar)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(btnsalir)
+                                .addContainerGap())))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(313, Short.MAX_VALUE)
+                    .addComponent(btnsalir1)
+                    .addGap(293, 293, 293)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(btnsalir))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -185,11 +222,16 @@ public class frmVendedores extends javax.swing.JFrame {
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(157, 157, 157)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(367, Short.MAX_VALUE)
+                    .addComponent(btnsalir1)
+                    .addGap(238, 238, 238)))
         );
 
         pack();
@@ -282,6 +324,18 @@ public class frmVendedores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+        // TODO add your handling code here:
+        int respuesta_cs = JOptionPane.showConfirmDialog(this,"¿Desea Cerrar Sesión?", "Cerrar Sesión",JOptionPane.YES_NO_OPTION);
+        if (respuesta_cs == 0) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnsalirActionPerformed
+
+    private void btnsalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalir1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsalir1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,6 +376,8 @@ public class frmVendedores extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnsalir;
+    private javax.swing.JButton btnsalir1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
