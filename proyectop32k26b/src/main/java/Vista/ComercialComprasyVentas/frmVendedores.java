@@ -400,7 +400,6 @@ public class frmVendedores extends javax.swing.JInternalFrame {
         String usuario = "root";
         String password = "tu_password";
         String sql = "SELECT codigo_empleado FROM empleados"; 
-        
         try (java.sql.Connection con = java.sql.DriverManager.getConnection(url, usuario, password);
              java.sql.PreparedStatement ps = con.prepareStatement(sql);
              java.sql.ResultSet rs = ps.executeQuery()) {
