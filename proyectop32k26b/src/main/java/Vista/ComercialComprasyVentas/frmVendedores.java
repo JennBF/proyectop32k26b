@@ -495,7 +495,36 @@ public class frmVendedores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
+        try {
+            Conexion cn = new Conexion();
+            Connection con = cn.getConnection();
+
+            if (con == null) {
+                JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+                return;
+            }
+
+            String rutaReporte = "src\\main\\java\\Reportes\\ComprayVentas\\reporteVendedores.jasper";
+
+            Map<String, Object> parametros = new HashMap<>();
+
+            JasperPrint reporte = JasperFillManager.fillReport(
+                rutaReporte,
+                parametros,
+                con
+            );
+
+            JasperViewer.viewReport(reporte, false);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Error al generar el reporte:\n" + e.getMessage()
+            );
+        }
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
