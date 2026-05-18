@@ -21,7 +21,8 @@ import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 /**
  *
  * @author isaia
@@ -37,6 +38,9 @@ public class frmCompras extends javax.swing.JFrame {
         initComponents();
         cargarTablaDetalles();
         cargarTablaFacturas();
+        cargarComboProveedores();
+        cargarComboProductos();
+
     }
     private void cargarTablaFacturas() {
 
@@ -124,8 +128,6 @@ private void cargarTablaDetalles() {
 }
     private void limpiarCampos() {
     Faccomnumero_txt.setText("");
-    Procodigo_txt.setText("");
-    Prodid_txt.setText("");
     Faccomcantidad_txt.setText("");
     Faccomprecio_txt.setText("");
     Faccomsubtotal_txt.setText("");
@@ -143,6 +145,72 @@ private void cargarTablaDetalles() {
         e.printStackTrace();
     }
 } 
+   private void cargarComboProveedores() {
+
+    comboProveedor.removeAllItems();
+
+    String sql = "SELECT Procodigo, Pronombre FROM proveedores";
+
+    try (Connection conn = Conexion.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+
+        while (rs.next()) {
+
+            int id = rs.getInt("Procodigo");
+            String nombre = rs.getString("Pronombre");
+
+            comboProveedor.addItem(id + " - " + nombre);
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Error al cargar proveedores: " + e.getMessage()
+        );
+    }
+}
+ private void cargarComboProductos() {
+
+    comboProducto.removeAllItems();
+
+    String sql = "SELECT Prodid, Prodnombre FROM productos";
+
+    try (Connection conn = Conexion.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+
+        while (rs.next()) {
+
+            int id = rs.getInt("Prodid");
+            String nombre = rs.getString("Prodnombre");
+
+            comboProducto.addItem(id + " - " + nombre);
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Error al cargar productos: " + e.getMessage()
+        );
+    }
+}  
+ private int obtenerIdCombo(javax.swing.JComboBox<String> combo) {
+
+    String seleccionado = (String) combo.getSelectedItem();
+
+    if (seleccionado == null || seleccionado.trim().isEmpty()) {
+        throw new RuntimeException("Debe seleccionar un dato del combo");
+    }
+
+    String[] partes = seleccionado.split(" - ");
+
+    return Integer.parseInt(partes[0].trim());
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -179,8 +247,6 @@ private void cargarTablaDetalles() {
         Faccomprecio_txt = new javax.swing.JTextField();
         Faccomcantidad_txt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        Prodid_txt = new javax.swing.JTextField();
-        Procodigo_txt = new javax.swing.JTextField();
         Calculo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Insert = new javax.swing.JButton();
@@ -188,6 +254,8 @@ private void cargarTablaDetalles() {
         Delete = new javax.swing.JButton();
         Clean = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
+        comboProducto = new javax.swing.JComboBox<>();
+        comboProveedor = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -196,7 +264,7 @@ private void cargarTablaDetalles() {
         Faccomsubtotal_txt.setEditable(false);
         Faccomsubtotal_txt.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel13.setText("ID");
+        jLabel13.setText("Busqueda ID");
 
         Faccomiva_txt.setEditable(false);
         Faccomiva_txt.setBackground(new java.awt.Color(204, 204, 204));
@@ -204,7 +272,7 @@ private void cargarTablaDetalles() {
         Query.setText("Buscar");
         Query.addActionListener(this::QueryActionPerformed);
 
-        jLabel4.setText("Subtotal");
+        jLabel4.setText("Iva");
 
         Update.setText("Actualizar");
         Update.addActionListener(this::UpdateActionPerformed);
@@ -212,7 +280,7 @@ private void cargarTablaDetalles() {
         Faccomtotal_txt.setEditable(false);
         Faccomtotal_txt.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel5.setText("Subtotal");
+        jLabel5.setText("Total");
 
         facturadetallescompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -228,7 +296,7 @@ private void cargarTablaDetalles() {
 
         Faccomdetid_txt.addActionListener(this::Faccomdetid_txtActionPerformed);
 
-        jLabel14.setText("ID detalles");
+        jLabel14.setText("Busqueda ID detalles");
 
         help.setBackground(new java.awt.Color(255, 255, 102));
         help.setText("Help");
@@ -274,18 +342,47 @@ private void cargarTablaDetalles() {
         Exit.setText("Salir");
         Exit.addActionListener(this::ExitActionPerformed);
 
+        comboProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboProducto.addActionListener(this::comboProductoActionPerformed);
+
+        comboProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboProveedor.addActionListener(this::comboProveedorActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(Clean)
-                .addGap(18, 18, 18)
-                .addComponent(Exit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(Clean)
+                        .addGap(18, 18, 18)
+                        .addComponent(Exit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel12)
+                                .addGap(28, 28, 28)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Faccomestado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -293,37 +390,26 @@ private void cargarTablaDetalles() {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(15, 15, 15)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Procodigo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(Faccomestado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(83, 83, 83))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(Faccomiva_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(Faccomsubtotal_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(Faccomnumero_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(Faccomtotal_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(Calculo))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Faccomiva_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Faccomsubtotal_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Faccomnumero_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Faccomtotal_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Calculo))
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
@@ -336,10 +422,6 @@ private void cargarTablaDetalles() {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel8)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(Prodid_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addComponent(jLabel10)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -370,21 +452,27 @@ private void cargarTablaDetalles() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(322, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(comboProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(Faccomestado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Clean)
-                        .addComponent(Exit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Clean)
+                            .addComponent(Exit)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(11, 11, 11)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(Procodigo_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6)
-                        .addComponent(Faccomestado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(33, 33, 33)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -436,15 +524,11 @@ private void cargarTablaDetalles() {
                                     .addComponent(jLabel14)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Faccomdetid_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12)
-                        .addComponent(Prodid_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(35, 35, 35)
+                    .addGap(66, 66, 66)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(help)
                         .addComponent(jButton1))
-                    .addContainerGap(50, Short.MAX_VALUE)))
+                    .addContainerGap(53, Short.MAX_VALUE)))
         );
 
         pack();
@@ -483,10 +567,6 @@ private void cargarTablaDetalles() {
 
                 Faccomnumero_txt.setText(
                     factura.getFaccomnumero());
-
-                Procodigo_txt.setText(
-                    String.valueOf(
-                        factura.getProcodigo()));
 
                 Faccomsubtotal_txt.setText(
                     String.format("%.2f",
@@ -544,8 +624,6 @@ private void cargarTablaDetalles() {
             if (Faccomid_txt.getText().trim().isEmpty()
                 || Faccomdetid_txt.getText().trim().isEmpty()
                 || Faccomnumero_txt.getText().trim().isEmpty()
-                || Procodigo_txt.getText().trim().isEmpty()
-                || Prodid_txt.getText().trim().isEmpty()
                 || Faccomcantidad_txt.getText().trim().isEmpty()
                 || Faccomprecio_txt.getText().trim().isEmpty()
                 || Faccomestado_txt.getText().trim().isEmpty()) {
@@ -559,13 +637,13 @@ private void cargarTablaDetalles() {
             // =========================
             int faccomid = Integer.parseInt(Faccomid_txt.getText().trim());
             int faccomdetid = Integer.parseInt(Faccomdetid_txt.getText().trim());
-
-            int procodigo = Integer.parseInt(Procodigo_txt.getText().trim());
-            int prodid = Integer.parseInt(Prodid_txt.getText().trim());
-
             double cantidad = Double.parseDouble(Faccomcantidad_txt.getText().trim());
             double precio = Double.parseDouble(Faccomprecio_txt.getText().trim());
-
+            //=====================
+            // IDs
+            //=====================
+            int procodigo = obtenerIdCombo(comboProveedor);
+            int prodid = obtenerIdCombo(comboProducto);
             // =========================
             // CALCULAR TOTALES
             // =========================
@@ -586,11 +664,11 @@ private void cargarTablaDetalles() {
 
             factura.setFaccomid(faccomid);
             factura.setFaccomnumero(Faccomnumero_txt.getText().trim());
-            factura.setProcodigo(procodigo);
             factura.setFaccomsubtotal(subtotalFactura);
             factura.setFaccomiva(iva);
             factura.setFaccomtotal(total);
             factura.setFaccomestado(Faccomestado_txt.getText().trim());
+            factura.setProcodigo(procodigo);
 
             // =========================
             // OBJETO DETALLE
@@ -599,10 +677,10 @@ private void cargarTablaDetalles() {
 
             detalle.setFaccomdetid(faccomdetid);
             detalle.setFaccomid(faccomid);
-            detalle.setProdid(prodid);
             detalle.setFaccomcantidad(cantidad);
             detalle.setFaccomprecio(precio);
             detalle.setFaccomsubtotal(subtotalDetalle);
+            detalle.setProdid(prodid);
 
             // =========================
             // ACTUALIZAR EN BD
@@ -638,7 +716,7 @@ private void cargarTablaDetalles() {
         // TODO add your handling code here:
         try {
         File archivo = new File(
-            "C:\\Users\\isaia\\Desktop\\Repositorios\\proyectop32k26b\\proyectop32k26b\\src\\main\\java\\Ayudas\\Compras\\AyudaComprasHelp.chm"
+            "src\\main\\java\\Ayudas\\Compras\\AyudaComprasHelp.chm"
         );
 
         if (!archivo.exists()) {
@@ -701,10 +779,9 @@ private void cargarTablaDetalles() {
             // VALIDAR CAMPOS VACÍOS
             // =========================
             if (Faccomnumero_txt.getText().trim().isEmpty()
-                || Procodigo_txt.getText().trim().isEmpty()
-                || Prodid_txt.getText().trim().isEmpty()
                 || Faccomcantidad_txt.getText().trim().isEmpty()
-                || Faccomprecio_txt.getText().trim().isEmpty()) {
+                || Faccomprecio_txt.getText().trim().isEmpty()
+                || Faccomestado_txt.getText().trim().isEmpty()){
 
                 JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
                 return;
@@ -713,12 +790,15 @@ private void cargarTablaDetalles() {
             // =========================
             // DATOS DEL DETALLE
             // =========================
-            int prodid = Integer.parseInt(Prodid_txt.getText().trim());
             double cantidad = Double.parseDouble(Faccomcantidad_txt.getText().trim());
             double precio = Double.parseDouble(Faccomprecio_txt.getText().trim());
 
             double subtotalDetalle = cantidad * precio;
-
+            // =========================
+            // OBTENER IDS DESDE COMBOBOX
+            // =========================
+              int procodigo = obtenerIdCombo(comboProveedor);
+              int prodid = obtenerIdCombo(comboProducto);
             // =========================
             // TOTALES DE FACTURA
             // =========================
@@ -737,8 +817,8 @@ private void cargarTablaDetalles() {
             clsFacturascompras factura = new clsFacturascompras();
 
             factura.setFaccomnumero(Faccomnumero_txt.getText().trim());
-            factura.setProcodigo(Integer.parseInt(Procodigo_txt.getText().trim()));
             factura.setFaccomsubtotal(subtotalFactura);
+            factura.setProcodigo(procodigo);
             factura.setFaccomiva(iva);
             factura.setFaccomtotal(total);
             factura.setFaccomestado(Faccomestado_txt.getText().trim());
@@ -761,8 +841,8 @@ private void cargarTablaDetalles() {
             clsFacturadetallecompras detalle = new clsFacturadetallecompras();
 
             detalle.setFaccomid(idFacturaGenerada);
-            detalle.setProdid(prodid);
             detalle.setFaccomcantidad(cantidad);
+            detalle.setProdid(prodid);
             detalle.setFaccomprecio(precio);
             detalle.setFaccomsubtotal(subtotalDetalle);
 
@@ -910,6 +990,15 @@ private void cargarTablaDetalles() {
     }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void comboProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboProductoActionPerformed
+
+    private void comboProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProveedorActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_comboProveedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -950,10 +1039,10 @@ private void cargarTablaDetalles() {
     private javax.swing.JTextField Faccomsubtotal_txt;
     private javax.swing.JTextField Faccomtotal_txt;
     private javax.swing.JButton Insert;
-    private javax.swing.JTextField Procodigo_txt;
-    private javax.swing.JTextField Prodid_txt;
     private javax.swing.JButton Query;
     private javax.swing.JButton Update;
+    private javax.swing.JComboBox<String> comboProducto;
+    private javax.swing.JComboBox<String> comboProveedor;
     private javax.swing.JTable facturadetallescompras;
     private javax.swing.JButton help;
     private javax.swing.JButton jButton1;
