@@ -81,6 +81,11 @@ public class frmComisionesVentas extends javax.swing.JFrame {
         BitacoraCV = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+<<<<<<< HEAD
+=======
+        jMenu4 = new javax.swing.JMenu();
+        Reporte = new javax.swing.JMenuItem();
+>>>>>>> origin/rtt
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -174,6 +179,21 @@ public class frmComisionesVentas extends javax.swing.JFrame {
 
         MenuComisionVen.add(jMenu2);
 
+<<<<<<< HEAD
+=======
+        jMenu4.setText("Reportes");
+
+        Reporte.setText("Reportes");
+        Reporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReporteActionPerformed(evt);
+            }
+        });
+        jMenu4.add(Reporte);
+
+        MenuComisionVen.add(jMenu4);
+
+>>>>>>> origin/rtt
         setJMenuBar(MenuComisionVen);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,14 +203,18 @@ public class frmComisionesVentas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(175, 175, 175)
                 .addComponent(ComisionesEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addContainerGap(633, Short.MAX_VALUE))
+=======
+                .addContainerGap(440, Short.MAX_VALUE))
+>>>>>>> origin/rtt
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(123, 123, 123)
                 .addComponent(ComisionesEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         pack();
@@ -340,6 +364,7 @@ public class frmComisionesVentas extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
